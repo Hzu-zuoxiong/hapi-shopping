@@ -8,7 +8,7 @@ module.exports = [{
 		method: 'GET',
 		path: `/${GROUP_NAME}`,
 		handler: async (request, reply) => {
-			const { rows: results, count: totalCount } = await models.shops.findAll({
+			const { rows: results, count: totalCount } = await models.shops.findAndCountAll({
 				attributes: ['id', 'name',],
 				limit: request.query.limit,
 				offset: (request.query.page - 1) * request.query.limit,
@@ -20,9 +20,11 @@ module.exports = [{
 			description: '获取店铺列表',
 			validate: {
 				query: {
-					...paginationDefine
+					...paginationDefine,
 				},
 			},
+			// 不通过JWT验证
+			auth: false,
 		},
 	}, {
 		method: 'GET',

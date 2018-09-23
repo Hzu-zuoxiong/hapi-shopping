@@ -9,9 +9,12 @@
   "author": "Hzu-zuoxiong",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "env2": "^2.2.2",
     "hapi": "^16.6.3",
+    "hapi-auth-jwt2": "^7.4.1",
     "hapi-pagination": "^1.22.0",
+    "jsonwebtoken": "^8.3.0",
     "mysql2": "^1.6.1",
     "sequelize": "^4.38.1",
     "sequelize-cli": "^4.1.1"
