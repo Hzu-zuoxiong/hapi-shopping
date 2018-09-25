@@ -1,5 +1,6 @@
 const Joi = require('joi');
-
+const { jwtHeaderDefine } = require('../utils/router-helper');
+const models = require('../models');
 const GROUP_NAME = 'orders';
 
 module.exports = [
@@ -7,7 +8,28 @@ module.exports = [
 		method: 'POST',
 		path: `/${GROUP_NAME}`,
 		handler: async (request, reply) => {
-			reply();
+			await models.sequelize.transaction((t) => {
+				const result = models.orders.create(
+					{user_id: request.auth.credentials.userId},
+					{transaction: t},
+				).then((order) => {
+					const goodsList = [];
+					request.payload.goodsList.forEach((item) => {
+						goodsList.push(models.order_goods.create({
+							order_id: order.dataValues.id,
+							goods_id: item.goods_id,
+							single_price: 4.9,
+							count: item.count,
+						}));
+					});
+					return Promise.all(goodsList);
+				});
+				return result;
+			}).then(() => {
+				reply('success');
+			}).catch(() => {
+				reply('error');
+			});
 		},
 		config: {
 			tags: ['api', GROUP_NAME],
@@ -21,9 +43,7 @@ module.exports = [
 						}),
 					),
 				},
-				headers: Joi.object({
-					authorization: Joi.string().required(),
-				}).unknown(),
+				...jwtHeaderDefine,
 			}
 		}
 	}, {
