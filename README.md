@@ -63,3 +63,5 @@ eyJ1c2VySWQiOjEsImV4cCI6MTUzNTMyMjc0NSwiaWF0IjoxNTM0NzE3OTQ1fQ.
 # signature：验证签发数据的合法性，是否存在第三方篡改伪造行为
 6tOdn2R82bxJbXjAnwU5g4g9EKqGNe-qo4qCo6UZnQ4...
 ```
+
+该案例参考自掘金小册：[基于hapi的Node.js小程序后端开发实践指南](https://juejin.im/book/5b63fdba6fb9a04fde5ae6d0)
