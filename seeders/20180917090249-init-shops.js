@@ -1,3 +1,9 @@
+/*
+  
+  seeders 目录用于在数据库中完成migrations初始化后，填补一些打底数据的配置目录。初始化完成后目录中暂无内容。
+
+*/
+
 'use strict';
 
 const timestamps = {

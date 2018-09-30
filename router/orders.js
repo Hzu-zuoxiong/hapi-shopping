@@ -65,11 +65,11 @@ module.exports = [
 				// 商品简单描述
 				body: '小程序支付',
 				// 商户号
-				mch_id: config.wxMchid，
+				mch_id: config.wxMchid,
 				// 随机字符串
 				nonce_str:Math.random().toString(36).substr(2, 15),
 				// 支付成功的回调地址
-				notify_url: 'http://127.0.0.1:3000/orders/pay/notify'
+				notify_url: 'http://127.0.0.1:3000/orders/pay/notify',
 				// 用户openid
 				openid,
 				// 商户订单号
@@ -152,10 +152,10 @@ module.exports = [
 		method: 'POST',
 		path: `/${GROUP_NAME}/pay/notify`,
 		handler: async (request, reply) => {
-			xml2js.parseString(request.payloadm async(err, parsedResult) => {
+			xml2js.parseString(request.payload, async(err, parsedResult) => {
 				if(parsedResult.xml.return_code[0] === 'SUCCESS') {
 					// 微信同一支付状态成功，需要检验本地数据的逻辑一致性
-					// 省略。。。细节逻辑校验
+					// 省略...细节逻辑校验
 					// 更新该订单编号下的支付状态为已支付
 					const orderId = parsedResult.xml.out_trade_no[0];
 					const orderResult = await models.orders.findOne({where: {id: orderId}});

@@ -1,3 +1,4 @@
+// jsonwebtoken 是Node.js生态里用于签发与检验JWT的流行插件
 const JWT = require('jsonwebtoken');
 const config = require('../config');
 const models = require('../models');

@@ -16,6 +16,7 @@ module.exports = {
 		host: env.MYSQL_HOST,
 		port: env.MYSQL_PORT,
 		dialect: 'mysql',
+		// 解决高版本sequelize连接警告
 		operatorsAliases: false,
 	},
 	production: {

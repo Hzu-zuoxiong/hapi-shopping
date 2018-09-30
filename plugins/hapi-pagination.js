@@ -1,3 +1,9 @@
+/*
+
+	分页插件 hapi-pagination@1
+	options具体参数配置说明：https://github.com/fknop/hapi-pagination/tree/v1.6.5
+
+*/
 const hapiPagination = require('hapi-pagination');
 
 const options = {

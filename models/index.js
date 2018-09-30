@@ -1,3 +1,9 @@
+/*
+  models 目录用于定义数据库表结构对应关系的模块目录，sequelize-cli自动生成Index.js文件
+  该模块自动读取config/config.js中的数据库连接配置，动态加载未来在models目录中所增加的数据库表结构定义的模块
+  最终可以通过models.tableName.operations的形式展开一系列的数据库表操作行为。
+*/
+
 'use strict';
 
 const fs = require('fs');

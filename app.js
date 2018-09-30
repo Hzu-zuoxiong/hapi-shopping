@@ -1,6 +1,7 @@
 const Hapi = require('hapi');
 require('env2')('./.env');
 const config = require('./config');
+// hapi-auth-jwt2 赋予系统中的部分接口，需要用户登录授权后才能访问
 const hapiAuthJWT2 = require('hapi-auth-jwt2');
 const routerHelloHapi = require('./router/hello-hapi');
 const routerShops = require('./router/shops');
@@ -27,6 +28,9 @@ const init = async () => {
 		hapiAuthJWT2,
 		...pluginHapiSwagger,
 	]);
+	// 插件完成注册之后，需要获取server实例后才能完成最终的配置
+	// 引入hapi-auth-jwt插件后，所有接口默认开启JWT认证
+	// 如果希望特定接口不通过JWT认证，在router的config定义auth=false的配置
 	pluginHapiAuthJWT2(server);
 	// 创建简单的hello hapi接口
 	server.route([

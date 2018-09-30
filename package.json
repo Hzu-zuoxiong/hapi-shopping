@@ -17,6 +17,7 @@
     "jsonwebtoken": "^8.3.0",
     "mysql2": "^1.6.1",
     "sequelize": "^4.38.1",
+    // 通过 sequelize-cli 初始化 sequelize 
     "sequelize-cli": "^4.1.1",
     "xml2js": "^0.4.19"
   },

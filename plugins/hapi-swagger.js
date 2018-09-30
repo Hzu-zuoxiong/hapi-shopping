@@ -1,3 +1,5 @@
+// Swagger插件配置
+// 在app.js中，通过server.register挂载
 const inert = require('inert');
 const vision = require('vision');
 const packageModule = require('package');

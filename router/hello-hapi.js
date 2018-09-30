@@ -13,6 +13,7 @@ module.exports = [{
 		tags: ['api', 'tests'],
 		description: '测试hello-hapi',
 		validate: {
+			// 增加需要jwt auth认证的接口header校验
 			...jwtHeaderDefine,
 		},
 	},

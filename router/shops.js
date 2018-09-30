@@ -8,6 +8,7 @@ module.exports = [{
 		method: 'GET',
 		path: `/${GROUP_NAME}`,
 		handler: async (request, reply) => {
+			// 返回的列表与总条数分别存放在 rows 与 count 字段的对象中
 			const { rows: results, count: totalCount } = await models.shops.findAndCountAll({
 				attributes: ['id', 'name',],
 				limit: request.query.limit,
@@ -41,6 +42,8 @@ module.exports = [{
 			reply({results, totalCount});
 		},
 		config: {
+			// 免JWT验证
+			auth: false,
 			tags: ['api', GROUP_NAME],
 			description: '获取店铺的商品列表',
 			validate: {
